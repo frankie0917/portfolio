@@ -3,10 +3,15 @@ import Particles from "react-tsparticles";
 import particlesOptions from "../particles.json";
 import { ISourceOptions } from "tsparticles";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
-export const Introduction = () => {
+export const Introduction = React.forwardRef<HTMLDivElement>((props, ref) => {
+  const { t } = useTranslation();
+
   const techs = [
     "fullstack",
+    "frontend",
+    "typescript",
     "react",
     "express",
     "graphql",
@@ -29,22 +34,29 @@ export const Introduction = () => {
   }, []);
 
   return (
-    <div className="justify-center items-center flex relative w-full h-full">
+    <div
+      ref={ref}
+      className="justify-center items-center flex relative w-full h-full"
+    >
       <Particles
         options={particlesOptions as ISourceOptions}
         width="100%"
         height="100%"
-        className="w-full h-full"
+        className="absolute w-full h-full z-0"
       />
       <div
-        className="absolute text-white text-6xl p-6"
-        style={{ background: "rgba(255,255,255,.1)" }}
+        className="absolute text-white text-6xl p-6 z-50 left-1/2 top-1/2 text-right"
+        style={{
+          background: "rgba(255,255,255,.1)",
+          transform: `translate(-75%, -50%)`,
+        }}
       >
-        <div>
-          Hi! My name is <span className="text-yellow-500">Frank Huang</span>.
+        <div className="mb-6">
+          {t("introduction.greeting")}
+          <span className="text-yellow-500 ml-4">{t("introduction.name")}</span>
         </div>
         <div className="flex">
-          I am a
+          {t("introduction.im_a")}
           <motion.span
             className="px-2 mx-2 text-yellow-500"
             animate={(index % 2) + ""}
@@ -57,9 +69,15 @@ export const Introduction = () => {
           >
             {techs[index]}
           </motion.span>
-          developer.
+          {t("introduction.developer")}
         </div>
+      </div>
+      <div
+        className="absolute w-52 h-52 bg-white top-1/2 left-1/2"
+        style={{ transform: `translate(130%, -50%)` }}
+      >
+        1
       </div>
     </div>
   );
-};
+});
