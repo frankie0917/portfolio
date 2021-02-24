@@ -12,6 +12,7 @@
     "@types/react-dom": "^17.0.1",
     "autoprefixer": "10.x",
     "cross-env": "7.x",
+    "framer-motion": "^3.6.7",
     "npm-run-all": "4.x",
     "postcss": "8.x",
     "postcss-cli": "8.x",
