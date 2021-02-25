@@ -1,10 +1,10 @@
-import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Translation } from "../locales";
 
 export type Link = {
   text: keyof Translation["nav"];
+  ref: React.RefObject<HTMLDivElement>;
 };
 
 export const Navbar: React.FC<{
@@ -18,17 +18,12 @@ export const Navbar: React.FC<{
 
   useEffect(() => {
     document.addEventListener("scroll", () => {
-      if (window.pageYOffset > window.innerHeight) {
-        setPassedIntro(true);
-      }
-
-      if (window.pageYOffset < window.innerHeight) {
-        setPassedIntro(false);
-      }
+      const threshold = window.pageYOffset > window.innerHeight * 2 - 50;
+      setPassedIntro(threshold);
     });
   }, []);
 
-  const Link = ({ text }: Link) => {
+  const Link = ({ text }: { text: Link["text"] }) => {
     return (
       <div
         className={`mr-4 px-2 py-4 cursor-pointer hover:underline ${

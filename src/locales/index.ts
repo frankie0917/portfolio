@@ -11,6 +11,10 @@ export const resources = {
 };
 
 export type Translation = {
+  name: string;
+  age: string;
+  from: string;
+  major: string;
   nav: {
     intro: string;
     about: string;
@@ -20,8 +24,23 @@ export type Translation = {
   };
   introduction: {
     greeting: string;
-    name: string;
     im_a: string;
     developer: string;
+  };
+  about: {
+    start: string;
+    end: string;
+    p1: string;
+    p2: {
+      l1: string;
+      l2: string;
+      l3: string;
+      l4: string;
+    };
+    p3: {
+      l1: string;
+      l2: string;
+    };
+    p4: string;
   };
 };

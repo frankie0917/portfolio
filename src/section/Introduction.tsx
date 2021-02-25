@@ -78,7 +78,7 @@ export const Introduction = React.forwardRef<HTMLDivElement>((props, ref) => {
       >
         <div className="mb-6">
           {t("introduction.greeting")}
-          <span className="text-yellow-500 ml-4">{t("introduction.name")}</span>
+          <span className="text-yellow-500 ml-4">{t("name")}</span>
         </div>
         <div className="flex">
           {t("introduction.im_a")}
