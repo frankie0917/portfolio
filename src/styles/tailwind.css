@@ -19,3 +19,12 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+img {
+  width: 100%;
+}
+
+.convex {
+  background: linear-gradient(145deg, #f0f0f0, #cacaca);
+  /* box-shadow: 10px 10px 20px #acacac, -10px -10px 20px #ffffff; */
+}

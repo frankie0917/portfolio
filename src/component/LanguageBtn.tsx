@@ -58,7 +58,7 @@ export const LanguageBtn = () => {
       }}
     >
       {renderLng("中", 0)}
-      {renderLng("E", 1)}
+      {renderLng("En", 1)}
     </motion.div>
   );
 };

@@ -5,21 +5,39 @@ import { ISourceOptions } from "tsparticles";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
+import fullstackImg from "../img/fullstack.svg";
+import frontendImg from "../img/frontend.svg";
+import typescriptImg from "../img/typescript.svg";
+import reactImg from "../img/react.svg";
+import expressImg from "../img/express.png";
+import typeormImg from "../img/typeorm.png";
+import graphqlImg from "../img/graphql.svg";
+import nexusImg from "../img/nexus.png";
+import sequelizeImg from "../img/sequelize.svg";
+import postgresImg from "../img/Postgres.svg";
+import reactNativeImg from "../img/react-native.svg";
+
+export type Tech = {
+  name: string;
+  bg?: string;
+  img: string;
+};
+
 export const Introduction = React.forwardRef<HTMLDivElement>((props, ref) => {
   const { t } = useTranslation();
 
-  const techs = [
-    "fullstack",
-    "frontend",
-    "typescript",
-    "react",
-    "express",
-    "graphql",
-    "typeorm",
-    "graphql-nexus",
-    "sequelize",
-    "postgres",
-    "react-native",
+  const techs: Tech[] = [
+    { name: "fullstack", img: fullstackImg },
+    { name: "frontend", img: frontendImg },
+    { name: "typescript", img: typescriptImg },
+    { name: "react", img: reactImg },
+    { name: "express", img: expressImg },
+    { name: "graphql", img: graphqlImg },
+    { name: "typeorm", img: typeormImg },
+    { name: "graphql-nexus", img: nexusImg },
+    { name: "sequelize", img: sequelizeImg },
+    { name: "postgres", img: postgresImg },
+    { name: "react-native", img: reactNativeImg },
   ];
   const [index, setIndex] = useState(0);
 
@@ -32,11 +50,18 @@ export const Introduction = React.forwardRef<HTMLDivElement>((props, ref) => {
       clearInterval(interval);
     };
   }, []);
+  const { img, name, bg } = techs[index];
+  const transition = {
+    delay: 1.8,
+    repeat: Infinity,
+    duration: 0.6,
+    repeatDelay: 1.4,
+  };
 
   return (
     <div
       ref={ref}
-      className="justify-center items-center flex relative w-full h-full"
+      className="justify-center items-center flex relative w-full h-full bg-gray-500"
     >
       <Particles
         options={particlesOptions as ISourceOptions}
@@ -45,7 +70,7 @@ export const Introduction = React.forwardRef<HTMLDivElement>((props, ref) => {
         className="absolute w-full h-full z-0"
       />
       <div
-        className="absolute text-white text-6xl p-6 z-50 left-1/2 top-1/2 text-right"
+        className="absolute text-white md:text-4xl text-6xl p-6 z-50 left-1/2 top-1/2 text-right"
         style={{
           background: "rgba(255,255,255,.1)",
           transform: `translate(-75%, -50%)`,
@@ -59,24 +84,31 @@ export const Introduction = React.forwardRef<HTMLDivElement>((props, ref) => {
           {t("introduction.im_a")}
           <motion.span
             className="px-2 mx-2 text-yellow-500"
-            animate={(index % 2) + ""}
-            variants={{
-              0: {
-                rotateX: 360,
-              },
-              1: { rotateX: 0 },
+            animate={{
+              rotateX: 360,
             }}
+            transition={transition}
           >
-            {techs[index]}
+            {name}
           </motion.span>
           {t("introduction.developer")}
         </div>
       </div>
       <div
-        className="absolute w-52 h-52 bg-white top-1/2 left-1/2"
-        style={{ transform: `translate(130%, -50%)` }}
+        className="absolute w-52 h-52 left-1/2"
+        style={{ transform: "translateX(100%)" }}
       >
-        1
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ ...transition, type: "spring" }}
+          className="w-full h-full bg-white flex justify-center items-center p-2 overflow-hidden rounded-xl convex"
+        >
+          <img
+            className={`${name === "frontend" ? "h-full w-auto" : ""}`}
+            src={img}
+            alt={name}
+          />
+        </motion.div>
       </div>
     </div>
   );
