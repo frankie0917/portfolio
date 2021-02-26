@@ -42,5 +42,10 @@ export type Translation = {
       l2: string;
     };
     p4: string;
+    upload_question: string;
+    your_score: string;
+    hint: string;
+    upload: string;
+    discard: string;
   };
 };

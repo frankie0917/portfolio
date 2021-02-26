@@ -47,12 +47,12 @@ function App() {
   };
   return (
     <div className="w-full h-full">
-      <Navbar links={links} scrollTo={scrollTo} />
       <Introduction ref={introRef} />
       <About ref={aboutRef} />
       <Tech ref={techRef} />
       <Projects ref={projectsRef} />
       <Contact ref={contactRef} />
+      <Navbar links={links} scrollTo={scrollTo} />
       <LanguageBtn />
     </div>
   );

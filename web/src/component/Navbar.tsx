@@ -31,6 +31,7 @@ export const Navbar: React.FC<{
             ? "text-black hover:text-gray-500"
             : "text-white hover:text-gray-400"
         }`}
+        style={{ zIndex: 100 }}
         onClick={() => scrollTo(text)}
       >
         {t("nav." + text)}

@@ -21,7 +21,7 @@ export const About = React.forwardRef<HTMLDivElement>((props, ref) => {
       >
         {isBegin ? t("about.end") : t("about.start")}
       </div>
-      {isBegin && <Game />}
+       <Game isBegin={isBegin} />
       <motion.div
         animate={isBegin ? "start" : "end"}
         variants={{

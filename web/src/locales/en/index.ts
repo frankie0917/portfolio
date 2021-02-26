@@ -34,5 +34,10 @@ export const en: Translation = {
     },
     p4:
       "currently I have 4 years of experience, following are my tech stack and projects, Thanks For Watching!",
+    your_score: "Your score is: ",
+    upload_question:"Do you want to upload?",
+    hint:"*Score will only be saved if its in the leaderboard",
+    upload: "Upload",
+    discard: "Discard",
   },
 };

@@ -32,5 +32,10 @@ export const cn: Translation = {
       l2: "。",
     },
     p4: "目前已经工作4年，下面是我的技术栈及作品集，感谢您的观看！",
+    your_score: "您的分数是：",
+    upload_question:"是否上传？",
+    hint:"*您的分数只有在上榜时才会被保存",
+    discard: "不上传",
+    upload: "上传",
   },
 };
