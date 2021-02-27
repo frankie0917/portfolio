@@ -3,6 +3,7 @@ import { Translation } from "..";
 export const en: Translation = {
   name: "Frank Huang",
   age: "21",
+  fetch_error: "Failed to load data! Please try agian.",
   from: "Taiwan",
   major: "BEC English",
   nav: {
@@ -18,6 +19,11 @@ export const en: Translation = {
     developer: "developer",
   },
   about: {
+    game: {
+      name: "Name: ",
+      name_taken: "Name is already taken",
+      no_name: "Name is a required field",
+    },
     start: "Start Game",
     end: "End Game",
     p1: "Hi! Welcome to my website~~",
@@ -35,9 +41,13 @@ export const en: Translation = {
     p4:
       "currently I have 4 years of experience, following are my tech stack and projects, Thanks For Watching!",
     your_score: "Your score is: ",
-    upload_question:"Do you want to upload?",
-    hint:"*Score will only be saved if its in the leaderboard",
+    upload_question: "Do you want to upload?",
+    hint: "*Score will only be saved if its in the leaderboard",
     upload: "Upload",
     discard: "Discard",
+    leaderboard: {
+      title: "Leaderboard",
+      note: "*Only shows top ten",
+    },
   },
 };

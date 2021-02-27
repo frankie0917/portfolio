@@ -2,12 +2,31 @@ import { motion } from "framer-motion";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import meImg from "../img/me.jpg";
+import { Loading } from "./Loading";
 
-export const Game = ({ isBegin }: { isBegin: boolean }) => {
+export const Game = ({
+  isBegin,
+  setNewValue,
+}: {
+  isBegin: boolean;
+  setNewValue: React.Dispatch<
+    React.SetStateAction<
+      | {
+          name: string;
+          score: number;
+        }
+      | undefined
+    >
+  >;
+}) => {
   const { t } = useTranslation();
   const ref = useRef<HTMLCanvasElement>(null);
-  const [userScore, setUserScore] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [userScore, setUserScore] = useState(10);
   const [comScore, setComScore] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState("");
+  const [name, setName] = useState("");
   const img = useMemo(() => new Image(), []);
   img.width = 40;
   img.height = 40;
@@ -213,47 +232,116 @@ export const Game = ({ isBegin }: { isBegin: boolean }) => {
     };
   }, [ref, img, isBegin]);
 
-  if (!isBegin) {
+  useEffect(() => {
     if (userScore > 0 || comScore > 0) {
-    return (
-      <div
-        className="absolute left-0 top-0 right-0 bottom-0 flex justify-center items-center"
-        style={{
-          background: "rgba(0,0,0,.5)",
-          zIndex: 100,
-        }}
-      >
-        <div className="z-20 bg-white rounded-xl shadow-2xl p-6">
-          <div className="flex justify-between mb-4">
-            <div>
-              <div className="text-gray-500 text-xl mb-2">{t("about.your_score")}</div>
-              <div className="text-2xl mb-2">{t("about.upload_question")}</div>
-            </div>
-            <div className="text-6xl text-yellow-500">{userScore - comScore}</div>
-          </div>
-          <div className="flex justify-between">
-            <motion.div
-              whileTap={{ scale: 0.9 }}
-              whileHover={{ scale: 1.1 }}
-              className="cursor-pointer rounded p-4 text-white bg-green-600"
-            >
-              {t("about.upload")}
-            </motion.div>
-            <motion.div
-              whileTap={{ scale: 0.9 }}
-              whileHover={{ scale: 1.1 }}
-              className="cursor-pointer rounded p-4 text-white bg-red-500"
-            >
-              {t("about.discard")}
-            </motion.div>
-          </div>
-          <div className="mt-2 text-gray-500 text-sm">{t("about.hint")}</div>
-        </div>
-      </div>
-    );
-    }else{
-      return <div></div>
+      setOpen(true);
     }
+  }, [isBegin, userScore, comScore]);
+
+  const upload = () => {
+    if (!name) return setError(t("about.game.no_name"));
+    setLoading(true);
+    fetch("http://localhost:4000/upload", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({ name, score: userScore - comScore }),
+    })
+      .then((res) => res.json())
+      .then((val) => {
+        if (val.error && val.error.includes("taken")) {
+          setLoading(false);
+          setError(t("about.game.name_taken"));
+        }
+
+        if ("success" in val) {
+          setOpen(false);
+          setNewValue({ name, score: userScore - comScore });
+        }
+      });
+  };
+
+  if (!isBegin) {
+    if (open) {
+      return (
+        <div
+          className="absolute left-0 top-0 right-0 bottom-0 flex justify-center items-center"
+          style={{
+            background: "rgba(0,0,0,.5)",
+            zIndex: 100,
+          }}
+        >
+          <div className="z-20 bg-white rounded-xl shadow-2xl p-6">
+            <div className={`flex justify-between mb-4`}>
+              {loading ? (
+                <div></div>
+              ) : (
+                <div>
+                  <div className="text-gray-500 text-xl mb-2">
+                    {t("about.your_score")}
+                  </div>
+                  <div className="text-2xl">{t("about.upload_question")}</div>
+                </div>
+              )}
+              <div className="text-6xl text-yellow-500">
+                {userScore - comScore}
+              </div>
+            </div>
+            {loading ? (
+              <Loading />
+            ) : (
+              <>
+                {" "}
+                <div className="mb-4 ">
+                  <label>{t("about.game.name")}</label>
+                  <input
+                    className={`border-2 rounded p-2 ${
+                      error ? "border-red-500" : "border-gray-500"
+                    }`}
+                    value={name}
+                    onChange={(e) => {
+                      setError("");
+                      setName(e.target.value);
+                    }}
+                  />
+                  {error && (
+                    <div className="text-sm text-red-500 text-right">
+                      {error}
+                    </div>
+                  )}
+                </div>
+                <div className="flex justify-between">
+                  <motion.div
+                    onClick={() => upload()}
+                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.1 }}
+                    className="cursor-pointer rounded p-4 text-white bg-green-600"
+                  >
+                    {t("about.upload")}
+                  </motion.div>
+                  <motion.div
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                    whileHover={{ scale: 1.1 }}
+                    className="cursor-pointer rounded p-4 text-white bg-red-500"
+                  >
+                    {t("about.discard")}
+                  </motion.div>
+                </div>
+                <div className="mt-2 text-gray-500 text-sm">
+                  {t("about.hint")}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      );
+    }
+    return <div></div>;
   }
 
   return (

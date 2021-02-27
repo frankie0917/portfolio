@@ -1,0 +1,11 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "score",
+      "database": "${workspaceFolder:portfolio}/server/src/score.db"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}

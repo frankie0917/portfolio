@@ -2,26 +2,48 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Game } from "../component/Game";
+import { Leaderboard } from "../component/Leaderboard";
 import meImg from "../img/me.jpg";
+import leaderboardImg from "../img/leaderboard.svg";
 
 export const About = React.forwardRef<HTMLDivElement>((props, ref) => {
   const { t } = useTranslation();
   const [isBegin, setIsBegin] = useState(false);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [newValue, setNewValue] = useState<{ name: string; score: number }>();
   return (
     <div
       ref={ref}
       className="h-full flex items-center justify-center bg-gray-700 relative"
     >
       <div
-        onClick={() => setIsBegin((prev) => !prev)}
-        className={`${
-          isBegin ? "bg-red-500 text-white" : "bg-white"
-        } disable-select cursor-pointer start-btn text-black p-4 outline-none left-1/2 top-20 rounded-md absolute`}
+        className=" left-1/2 top-20 h-20 absolute flex"
         style={{ transform: "translate(-50%,0)" }}
       >
-        {isBegin ? t("about.end") : t("about.start")}
+        <motion.div
+          onClick={() => {
+            setIsBegin((prev) => !prev);
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className={`${
+            isBegin ? "bg-red-500 text-white" : "bg-white"
+          } disable-select cursor-pointer text-black p-4 outline-none rounded-md flex justify-center items-center`}
+        >
+          {isBegin ? t("about.end") : t("about.start")}
+        </motion.div>
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setShowLeaderboard(true)}
+          className={
+            "bg-yellow-500 w-20 ml-4 text-white disable-select cursor-pointer text-black p-4 outline-none rounded-md"
+          }
+        >
+          <img src={leaderboardImg} alt="leaderboard" />
+        </motion.div>
       </div>
-       <Game isBegin={isBegin} />
+      <Game isBegin={isBegin} setNewValue={setNewValue} />
       <motion.div
         animate={isBegin ? "start" : "end"}
         variants={{
@@ -66,6 +88,12 @@ export const About = React.forwardRef<HTMLDivElement>((props, ref) => {
       >
         <img src={meImg} alt="me" />
       </div>
+      <Leaderboard
+        show={showLeaderboard}
+        setShow={setShowLeaderboard}
+        newValue={newValue}
+        setNewValue={setNewValue}
+      />
     </div>
   );
 });

@@ -12,6 +12,7 @@ export const resources = {
 
 export type Translation = {
   name: string;
+  fetch_error: string;
   age: string;
   from: string;
   major: string;
@@ -47,5 +48,14 @@ export type Translation = {
     hint: string;
     upload: string;
     discard: string;
+    game: {
+      name: string;
+      no_name: string;
+      name_taken: string;
+    };
+    leaderboard: {
+      title: string;
+      note: string;
+    };
   };
 };
