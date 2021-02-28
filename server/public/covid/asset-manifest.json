@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b2332d58.chunk.css",
+    "main.js": "/static/js/main.c17729b9.chunk.js",
+    "main.js.map": "/static/js/main.c17729b9.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.310cdbaa.js",
+    "runtime-main.js.map": "/static/js/runtime-main.310cdbaa.js.map",
+    "static/js/2.cd8be421.chunk.js": "/static/js/2.cd8be421.chunk.js",
+    "static/js/2.cd8be421.chunk.js.map": "/static/js/2.cd8be421.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.8f29042987f2e6e3c7e3d3a117660615.js": "/precache-manifest.8f29042987f2e6e3c7e3d3a117660615.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.b2332d58.chunk.css.map": "/static/css/main.b2332d58.chunk.css.map",
+    "static/js/2.cd8be421.chunk.js.LICENSE.txt": "/static/js/2.cd8be421.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/HuaKangJinGangHei-Regular.67233399.ttf",
+    "static/media/covid-19.png": "/static/media/covid-19.f88f6468.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.310cdbaa.js",
+    "static/js/2.cd8be421.chunk.js",
+    "static/css/main.b2332d58.chunk.css",
+    "static/js/main.c17729b9.chunk.js"
+  ]
+}

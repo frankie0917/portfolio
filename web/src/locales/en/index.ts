@@ -50,4 +50,9 @@ export const en: Translation = {
       note: "*Only shows top ten",
     },
   },
+  contact: {
+    phone: "Phone",
+    wechat: "WeChat",
+    note: "",
+  },
 };

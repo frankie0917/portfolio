@@ -48,4 +48,9 @@ export const cn: Translation = {
       note: "*只显示前十名",
     },
   },
+  contact: {
+    note: "",
+    phone: "电话",
+    wechat: "微信",
+  },
 };

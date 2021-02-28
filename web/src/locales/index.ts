@@ -58,4 +58,9 @@ export type Translation = {
       note: string;
     };
   };
+  contact: {
+    wechat: string;
+    phone: string;
+    note: string;
+  };
 };

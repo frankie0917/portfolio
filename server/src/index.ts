@@ -2,6 +2,7 @@ import express from "express";
 import sqlite from "sqlite3";
 const app = express();
 import cors from "cors";
+import path from "path";
 
 const conn = sqlite.verbose();
 const db = new conn.Database(__dirname + "./score.db", (err) => {
@@ -12,6 +13,21 @@ const db = new conn.Database(__dirname + "./score.db", (err) => {
   }
 
   console.log("Successfully connected to database");
+});
+
+app.use(express.static(path.join(__dirname, "../public/main")));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/main/index.html"));
+});
+
+app.use(express.static(path.join(__dirname, "../public/covid")));
+app.get("/covid", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/covid/index.html"));
+});
+
+app.use(express.static(path.join(__dirname, "../public/nonogram")));
+app.get("/nonogram", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/nonogram/index.html"));
 });
 
 app.use(cors());

@@ -23,22 +23,23 @@ export type Tech = {
   img: string;
 };
 
+export const techs: Tech[] = [
+  { name: "fullstack", img: fullstackImg },
+  { name: "frontend", img: frontendImg },
+  { name: "typescript", img: typescriptImg },
+  { name: "react", img: reactImg },
+  { name: "express", img: expressImg },
+  { name: "graphql", img: graphqlImg },
+  { name: "typeorm", img: typeormImg },
+  { name: "graphql-nexus", img: nexusImg },
+  { name: "sequelize", img: sequelizeImg },
+  { name: "postgres", img: postgresImg },
+  { name: "react-native", img: reactNativeImg },
+];
+
 export const Introduction = React.forwardRef<HTMLDivElement>((props, ref) => {
   const { t } = useTranslation();
 
-  const techs: Tech[] = [
-    { name: "fullstack", img: fullstackImg },
-    { name: "frontend", img: frontendImg },
-    { name: "typescript", img: typescriptImg },
-    { name: "react", img: reactImg },
-    { name: "express", img: expressImg },
-    { name: "graphql", img: graphqlImg },
-    { name: "typeorm", img: typeormImg },
-    { name: "graphql-nexus", img: nexusImg },
-    { name: "sequelize", img: sequelizeImg },
-    { name: "postgres", img: postgresImg },
-    { name: "react-native", img: reactNativeImg },
-  ];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {

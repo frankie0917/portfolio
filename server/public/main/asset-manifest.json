@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7fc0ce5f.chunk.css",
+    "main.js": "/static/js/main.a457c34f.chunk.js",
+    "main.js.map": "/static/js/main.a457c34f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d0605945.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d0605945.js.map",
+    "static/js/2.ce8bd990.chunk.js": "/static/js/2.ce8bd990.chunk.js",
+    "static/js/2.ce8bd990.chunk.js.map": "/static/js/2.ce8bd990.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.7fc0ce5f.chunk.css.map": "/static/css/main.7fc0ce5f.chunk.css.map",
+    "static/js/2.ce8bd990.chunk.js.LICENSE.txt": "/static/js/2.ce8bd990.chunk.js.LICENSE.txt",
+    "static/media/FrankHuang.114eac34.svg": "/static/media/FrankHuang.114eac34.svg",
+    "static/media/Postgres.50e4fcf6.svg": "/static/media/Postgres.50e4fcf6.svg",
+    "static/media/change.39e173c4.svg": "/static/media/change.39e173c4.svg",
+    "static/media/covid.b952399a.png": "/static/media/covid.b952399a.png",
+    "static/media/express.4f6e3a7b.png": "/static/media/express.4f6e3a7b.png",
+    "static/media/frontend.0cd80f39.svg": "/static/media/frontend.0cd80f39.svg",
+    "static/media/fullstack.16d2b432.svg": "/static/media/fullstack.16d2b432.svg",
+    "static/media/graphql.9530627d.svg": "/static/media/graphql.9530627d.svg",
+    "static/media/leaderboard.32b8ba91.svg": "/static/media/leaderboard.32b8ba91.svg",
+    "static/media/loading.ee7dc574.svg": "/static/media/loading.ee7dc574.svg",
+    "static/media/me.4ea9affa.jpg": "/static/media/me.4ea9affa.jpg",
+    "static/media/nonogram.a09ac5d3.png": "/static/media/nonogram.a09ac5d3.png",
+    "static/media/react-native.ab9e1d99.svg": "/static/media/react-native.ab9e1d99.svg",
+    "static/media/react.513016e2.svg": "/static/media/react.513016e2.svg",
+    "static/media/sequelize.7d415ddd.svg": "/static/media/sequelize.7d415ddd.svg",
+    "static/media/typeorm.45566afe.png": "/static/media/typeorm.45566afe.png",
+    "static/media/typescript.5c526633.svg": "/static/media/typescript.5c526633.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d0605945.js",
+    "static/js/2.ce8bd990.chunk.js",
+    "static/css/main.7fc0ce5f.chunk.css",
+    "static/js/main.a457c34f.chunk.js"
+  ]
+}

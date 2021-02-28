@@ -5,12 +5,10 @@ import { About } from "./section/About";
 import { Contact } from "./section/Contact";
 import { Introduction } from "./section/Introduction";
 import { Projects } from "./section/Projects";
-import { Tech } from "./section/Tech";
 
 function App() {
   const introRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
-  const techRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
@@ -22,10 +20,6 @@ function App() {
     {
       text: "about",
       ref: aboutRef,
-    },
-    {
-      text: "tech",
-      ref: techRef,
     },
     {
       text: "projects",
@@ -49,7 +43,6 @@ function App() {
     <div className="w-full h-full">
       <Introduction ref={introRef} />
       <About ref={aboutRef} />
-      <Tech ref={techRef} />
       <Projects ref={projectsRef} />
       <Contact ref={contactRef} />
       <Navbar links={links} scrollTo={scrollTo} />
